@@ -1,13 +1,13 @@
 ---
 name: httpd
-packages: []
+packages:
+- pcre
+- apr
+- apr_util
+- apache2
 templates:
-  bin/monit_debugger: bin/monit_debugger
   bin/httpd_ctl: bin/httpd_ctl
-  config/httpd.conf.erb: config/httpd.conf
+  bin/monit_debugger: bin/monit_debugger
   data/properties.sh.erb: data/properties.sh
   helpers/ctl_setup.sh: helpers/ctl_setup.sh
   helpers/ctl_utils.sh: helpers/ctl_utils.sh
-properties:
-  httpd.leader_address:
-    description: Hostname/IP to the leader/master of the cluster
