@@ -1,5 +1,8 @@
 ---
 name: apache2
-dependencies: []
+dependencies:
+- pcre
+- apr
+- apr_util
 files:
 - apache2/httpd-2.4.9.tar.gz
