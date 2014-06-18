@@ -11,7 +11,7 @@ export HOME=/var/vcap
 
 tar xfv apr_util/apr-util-1.5.3.tar.gz -C $BOSH_INSTALL_TARGET
 mv $BOSH_INSTALL_TARGET/apr-util-1.5.3/* $BOSH_INSTALL_TARGET/
-chown -R vcap:vcap $BOSH_INSTALL_TARGET
+#chown -R vcap:vcap $BOSH_INSTALL_TARGET
 #cd apr-util
 #./configure --prefix=${BOSH_INSTALL_TARGET}
 #make -j${CPUS} && make install

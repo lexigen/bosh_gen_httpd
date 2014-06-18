@@ -2,7 +2,7 @@ set -e # exit immediately if a simple command exits with a non-zero status
 set -u # report the usage of uninitialized variables
 
 # Detect # of CPUs so make jobs can be parallelized
-#CPUS=$(grep -c ^processor /proc/cpuinfo)
+CPUS=$(grep -c ^processor /proc/cpuinfo)
  # Available variables
 # $BOSH_COMPILE_TARGET - where this package & spec'd source files are available
 # $BOSH_INSTALL_TARGET - where you copy/install files to be included in package
@@ -11,9 +11,9 @@ export HOME=/var/vcap
 
 tar xfv apache2/httpd-2.4.9.tar.gz -C $BOSH_INSTALL_TARGET
 mv $BOSH_INSTALL_TARGET/httpd-2.4.9 $BOSH_INSTALL_TARGET/httpd
-chown -R vcap:vcap $BOSH_INSTALL_TARGET/httpd
-#cd httpd-2.4.9
-#./configure --prefix=${BOSH_INSTALL_TARGET}
-#make -j${CPUS} && make install
+#chown -R vcap:vcap $BOSH_INSTALL_TARGET/httpd
+cd $BOSH_INSTALL_TARGET/httpd
+./configure --enable-file-cache --enable-cache --enable-disk-cache --enable-mem-cache --enable-deflate --enable-expires --enable-headers --enable-usertrack --enable-cgi --enable-vhost-alias --enable-rewrite --enable-so --with-apr=/var/vcap/packages/apr --prefix=$BOSH_INSTALL_TARGET/httpd/ --with-included-apr --with-pcre=/var/vcap/packages/pcre/pcre-config
+make -j${CPUS} && make install
 # Alternatively, to copy archive contents:
 # cp -a httpd-2.4.9/* $BOSH_INSTALL_TARGET
