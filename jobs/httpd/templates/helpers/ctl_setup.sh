@@ -70,11 +70,11 @@ then
 fi
 
 # setup CLASSPATH for all jars/ folders within packages
-export CLASSPATH=${CLASSPATH:-''} # default to empty
-for java_jar in $(ls -d /var/vcap/packages/*/*/*.jar)
-do
-  export CLASSPATH=${java_jar}:$CLASSPATH
-done
+# export CLASSPATH=${CLASSPATH:-''} # default to empty
+# for java_jar in $(ls -d /var/vcap/packages/*/*/*.jar)
+# do
+#   export CLASSPATH=${java_jar}:$CLASSPATH
+# done
 
 PIDFILE=$RUN_DIR/$output_label.pid
 
